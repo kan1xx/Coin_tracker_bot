@@ -7,6 +7,8 @@ from aiogram.filters import Command
 from os import getenv
 from dotenv import load_dotenv
 
+from texts import START_TEXT
+
 load_dotenv()
 BOT_TOKEN = getenv('BOT_TOKEN')
 
@@ -15,9 +17,7 @@ dp = Dispatcher()
 
 @dp.message(Command('start'))
 async def commands_start_handler(message: Message):
-    await message.reply('!')
-
-
+    await message.reply(START_TEXT, parse_mode='HTML')
 
 
 
