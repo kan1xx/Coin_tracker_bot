@@ -1,4 +1,3 @@
-Telegram bot on aiogram 3.22
 👋 Welcome to the Coin Tracker Bot! This bot can display real-time information about the selected cryptocurrency. 
 
 Steps to launch:
@@ -8,3 +7,5 @@ Steps to launch:
 4) pip install requirements.txt
 5) echo YOUR_BOT_TOKEN > .env
 6) python main.py
+
+aiogram version: 3.22
