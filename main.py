@@ -24,22 +24,21 @@ Coins_choose_keyboard = ReplyKeyboardMarkup(
 
 @dp.message(Command('start'))
 async def commands_start_handler(message: Message):
-    await message.reply(START_TEXT, parse_mode='HTML', reply_markup=Coins_choose_keyboard)
+    await message.reply(START_TEXT, parse_mode='HTML')
 
 @dp.message()
 async def get_info_about_coin(message: Message):
-    symbol = message.text + 'USDT'
-    data = await get_info(symbol)
+    try:
+        symbol = message.text.upper() + 'USDT'
+        data = await get_info(symbol)
 
-    formatted_price = format(float(data['lastPrice']), '.2f')
-    formatted_high_price = format(float(data['highPrice']), '.2f')
-    formatted_low_price = format(float(data['lowPrice']), '.2f')
-    formatted_price_change_percent = format(float(data['priceChangePercent']), '.2f')
-    formatted_volume = format(float(data['volume']), '.2f')
+        formatted_price = format(float(data['lastPrice']), '.2f')
+        formatted_high_price = format(float(data['highPrice']), '.2f')
+        formatted_low_price = format(float(data['lowPrice']), '.2f')
+        formatted_price_change_percent = format(float(data['priceChangePercent']), '.2f')
+        formatted_volume = format(float(data['volume']), '.2f')
 
-
-
-    await message.reply(
+        await message.reply(
         f'Info about: <b>{symbol}</b>\n'
         f'💰 <b>Currently price:</b> ${formatted_price}\n'
         f'🔺 <b>Highest price for 24 hours:</b> {formatted_high_price}\n'
@@ -48,17 +47,14 @@ async def get_info_about_coin(message: Message):
         f'📊 <b>Volume:</b> {formatted_volume}\n',
         parse_mode='HTML'
        )
+    except KeyError:
+        await message.reply('Incorrect quote!')
 
 
     
 
 
-
-
-
-
-
-
+    
 
 async def main():
     await dp.start_polling(bot)
