@@ -16,7 +16,9 @@ dp = Dispatcher()
 
 Coins_choose_keyboard = ReplyKeyboardMarkup(
     keyboard = [
-    [KeyboardButton(text='BTC')]   
+    [KeyboardButton(text='BTC')],
+    [KeyboardButton(text='ETH')],
+    [KeyboardButton(text='TON')]    
     ],resize_keyboard=True)
     
 
