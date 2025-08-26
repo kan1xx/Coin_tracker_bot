@@ -40,11 +40,12 @@ async def get_info_about_coin(message: Message):
 
         await message.reply(
         f'Info about: <b>{symbol}</b>\n'
+        f'⏰ <b>Time frame:</b> 24h \n'
         f'💰 <b>Currently price:</b> ${formatted_price}\n'
-        f'🔺 <b>Highest price for 24 hours:</b> {formatted_high_price}\n'
-        f'🔻 <b>Lowest price for 24 hours:</b> {formatted_low_price}\n'
-        f'📈 <b>Price change percent: </b> {formatted_price_change_percent}\n'
-        f'📊 <b>Volume:</b> {formatted_volume}\n',
+        f'🔺 <b>Highest price for 24 hours:</b> ${formatted_high_price}\n'
+        f'🔻 <b>Lowest price for 24 hours:</b> ${formatted_low_price}\n'
+        f'📈 <b>Price change percent: </b> {formatted_price_change_percent}%\n'
+        f'📊 <b>Volume:</b> {formatted_volume} {message.text.upper()}\n',
         parse_mode='HTML'
        )
     except KeyError:
